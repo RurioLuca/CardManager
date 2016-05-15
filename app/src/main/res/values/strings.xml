@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CardManager</string>
+    <string name="add_card">Aggiungi carta una credito</string>
+    <string name="save">Salva</string>
+    <string name="card_num">numero carta</string>
+    <string name="card_owen">Nome e Cognome</string>
+    <string name="scadenza">Data Scadenza</string>
+    <string name="cvv">CVV</string>
+    <string name="validto">Valid to</string>
+    <string name="saldoal">Saldo al %1$s</string>
+    <string name="saldoiniziale">Saldo Iniziale</string>
+    <string name="meseerrato">Attenzione data non valida</string>
+    <string name="entrata">Entrata</string>
+    <string name="uscita">Uscita</string>
+    <string name="causale">Causale</string>
+    <string name="insetsomma">Inserisci la somma</string>
+    <string name="addmovimento">Aggiungi movimento</string>
+    <string name="campovuoto">Campo vuoto</string>
+
+</resources>
