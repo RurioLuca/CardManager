@@ -52,10 +52,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 return "Movimenti";
             default:
                 return "error";
-
         }
-
     }
-
-
 }

@@ -46,6 +46,7 @@ public class ActivityAddCard extends AppCompatActivity {
     private Spinner typeCard;
     private List<String> types;
     private CollapsingToolbarLayout collapsingToolbarLayout;
+    private int dataCount;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class ActivityAddCard extends AppCompatActivity {
         creditCardView.setTextNumber("0000 0000 0000 0000");
         creditCardView.setTextOwner("Name Surname");
         creditCardView.setTextCVV("000");
-
+        dataCount = 0;
         types = new ArrayList<>();
         types.add(Costant.AMEX);
         types.add(Costant.AURA);
@@ -127,7 +128,13 @@ public class ActivityAddCard extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String date = s.toString();
+              String date = s.toString();
+              /*    if (dataCount > date.length() && date.contains("/")) {
+                    date = date.substring(0, 1);
+                    edt_scadenza.setText(date);
+                    edt_scadenza.setSelection(date.length());
+                }
+
                 if (date.length() == 2 && !date.contains("/")) {
                     if (Integer.parseInt(date) <= 12) {
                         edt_scadenza.setError(getString(R.string.meseerrato));
@@ -137,6 +144,7 @@ public class ActivityAddCard extends AppCompatActivity {
                     edt_scadenza.setText(date);
                     edt_scadenza.setSelection(date.length());
                 }
+*/
                 creditCardView.setTextExpDate(date);
             }
 
@@ -157,12 +165,19 @@ public class ActivityAddCard extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String number = s.toString();
-                if (number.length() == 4 || number.length() == 9 || number.length() == 14 || number.length() == 19) {
+              String number = s.toString();
+ /*
+                if (number.length() >= 19) {
+                    number = number.substring(0, 18);
+                    edt_number.setText(number);
+                    return;
+                }
+
+                if (number.length() == 4 || number.length() == 9 || number.length() == 14) {
                     number = number + " ";
                     edt_number.setText(number);
                     edt_number.setSelection(number.length());
-                }
+                }*/
                 creditCardView.setTextNumber(number);
             }
 
@@ -200,7 +215,12 @@ public class ActivityAddCard extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+              String cvc = s.toString();
+             /*   if (cvc.length() == 3) {
+                   return;
+                }*/
                 creditCardView.setTextCVV(s);
+
             }
 
             @Override
@@ -252,6 +272,7 @@ public class ActivityAddCard extends AppCompatActivity {
         if (realm.where(MovimentiDB.class).max("id") != null) {
             nextID2 = (realm.where(MovimentiDB.class).max("id").intValue()) + 1;
         }
+
         realm.beginTransaction();
         Card card = new Card();
         card.setId(nextID);
